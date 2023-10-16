@@ -277,7 +277,6 @@ class DashBoardScreenState extends State<DashBoardScreen> {
               ),
               Container(
                 height: appHeight * 0.6,
-                color: Colors.black12,
                 child: SafeArea(
                   child: Column(
                     children: [
@@ -328,121 +327,134 @@ class DashBoardScreenState extends State<DashBoardScreen> {
               ),
               Container(
                 height: appHeight * 0.1,
-                child: Center(
-                  child: GridView.count(crossAxisCount: 2, children: [
-                    SizedBox(
-                      height: appHeight * 0.045,
-                      width: mainWidth * 0.4,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5),
-                              topRight: Radius.circular(50),
-                              bottomLeft: Radius.circular(50),
-                              bottomRight: Radius.circular(5),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            SizedBox(
+                              height: appHeight * 0.045,
+                              width: mainWidth * 0.4,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(5),
+                                      topRight: Radius.circular(50),
+                                      bottomLeft: Radius.circular(50),
+                                      bottomRight: Radius.circular(5),
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () => _showRoute(),
+                                child: Text('Show Route'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: appHeight * 0.045,
+                              width: mainWidth * 0.4,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(5),
+                                      topRight: Radius.circular(50),
+                                      bottomLeft: Radius.circular(50),
+                                      bottomRight: Radius.circular(5),
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () => _showRoute(),
+                                child: Text('Navigate'),
+                              ),
+                            ),
+                          ]),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SizedBox(
+                            height: appHeight * 0.045,
+                            width: mainWidth * 0.4,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(5),
+                                    topRight: Radius.circular(50),
+                                    bottomLeft: Radius.circular(50),
+                                    bottomRight: Radius.circular(5),
+                                  ),
+                                ),
+                              ),
+                              onPressed: () => _getCurrentLocation(),
+                              child: Text('Current Location'),
                             ),
                           ),
-                        ),
-                        onPressed: () => _showRoute(),
-                        child: Text('Show Route'),
-                      ),
-                    ),
-                    SizedBox(
-                      height: appHeight * 0.045,
-                      width: mainWidth * 0.4,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5),
-                              topRight: Radius.circular(50),
-                              bottomLeft: Radius.circular(50),
-                              bottomRight: Radius.circular(5),
-                            ),
-                          ),
-                        ),
-                        onPressed: () => _showRoute(),
-                        child: Text('Navigate'),
-                      ),
-                    ),
-                    SizedBox(
-                      height: appHeight * 0.045,
-                      width: mainWidth * 0.4,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5),
-                              topRight: Radius.circular(50),
-                              bottomLeft: Radius.circular(50),
-                              bottomRight: Radius.circular(5),
-                            ),
-                          ),
-                        ),
-                        onPressed: () => _getCurrentLocation(),
-                        child: Text('Current Location'),
-                      ),
-                    ),
-                    SizedBox(
-                      height: appHeight * 0.045,
-                      width: mainWidth * 0.4,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5),
-                              topRight: Radius.circular(50),
-                              bottomLeft: Radius.circular(50),
-                              bottomRight: Radius.circular(5),
-                            ),
-                          ),
-                        ),
-                        onPressed: () async {
-                          String errormeg = "";
-                          if (_FromInput.text.isEmpty &&
-                              _DestinationInput.text.isEmpty) {
-                            errormeg =
-                                "Please Enter Your and Destination location";
-                          } else if (_FromInput.text.isEmpty) {
-                            errormeg = "Please Enter Your location";
-                          } else if (_DestinationInput.text.isEmpty) {
-                            errormeg = "Please Enter Destination location";
-                          }
+                          SizedBox(
+                            height: appHeight * 0.045,
+                            width: mainWidth * 0.4,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(5),
+                                    topRight: Radius.circular(50),
+                                    bottomLeft: Radius.circular(50),
+                                    bottomRight: Radius.circular(5),
+                                  ),
+                                ),
+                              ),
+                              onPressed: () async {
+                                String errormeg = "";
+                                if (_FromInput.text.isEmpty &&
+                                    _DestinationInput.text.isEmpty) {
+                                  errormeg =
+                                      "Please Enter Your and Destination location";
+                                } else if (_FromInput.text.isEmpty) {
+                                  errormeg = "Please Enter Your location";
+                                } else if (_DestinationInput.text.isEmpty) {
+                                  errormeg =
+                                      "Please Enter Destination location";
+                                }
 
-                          if (errormeg.isEmpty) {
-                            SharedPreferences prefs =
-                                await SharedPreferences.getInstance();
-                            List<String>? temp =
-                                await prefs.getStringList("PreviousJourney");
-                            var datetime = DateTime.now();
-                            print(datetime.day);
-                            Map<String, dynamic> dict = {
-                              "From": _FromInput.text,
-                              "Destination": _DestinationInput.text,
-                              "year": datetime.year,
-                              "month": datetime.month,
-                              "date": datetime.day,
-                              "hour": datetime.hour,
-                              "min": datetime.minute
-                            };
-                            if (temp == null) {
-                              temp = [jsonEncode(dict)];
-                            } else {
-                              temp.add(jsonEncode(dict));
-                            }
-                            await prefs.setStringList("PreviousJourney", temp);
-                            print(temp);
-                          } else {
-                            showCustomSnackBar(context, errormeg, mainHeight);
-                          }
-                        },
-                        child:
-                            Text("Make Plan", style: TextStyle(fontSize: 20)),
+                                if (errormeg.isEmpty) {
+                                  SharedPreferences prefs =
+                                      await SharedPreferences.getInstance();
+                                  List<String>? temp = await prefs
+                                      .getStringList("PreviousJourney");
+                                  var datetime = DateTime.now();
+                                  print(datetime.day);
+                                  Map<String, dynamic> dict = {
+                                    "From": _FromInput.text,
+                                    "Destination": _DestinationInput.text,
+                                    "year": datetime.year,
+                                    "month": datetime.month,
+                                    "date": datetime.day,
+                                    "hour": datetime.hour,
+                                    "min": datetime.minute
+                                  };
+                                  if (temp == null) {
+                                    temp = [jsonEncode(dict)];
+                                  } else {
+                                    temp.add(jsonEncode(dict));
+                                  }
+                                  await prefs.setStringList(
+                                      "PreviousJourney", temp);
+                                  print(temp);
+                                } else {
+                                  showCustomSnackBar(
+                                      context, errormeg, mainHeight);
+                                }
+                              },
+                              child: Text(
+                                "Make Plan",
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ]),
-                ),
+                    ]),
               ),
             ],
           ),
